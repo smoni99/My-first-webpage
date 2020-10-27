@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Codes</h1>
+<ul>
+    {% for code in codes %}
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <a href="{{ code.name }}/" class="card-link">{{ code.name }}</a>
+        </div>
+    </div>
+    {% endfor %}
+</ul>
+{% endblock %}

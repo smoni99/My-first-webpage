@@ -1,0 +1,150 @@
+{% extends 'base.html' %}
+
+{% block content %}
+        <pre># Hangman
+
+import os
+def clear():
+    os.system( 'cls' )
+hangman9='''
+  _______
+ || /    |
+ ||/     O
+ ||     /|\\
+ ||      |
+ ||     / \\
+ ||
+/¯¯\\
+'''
+hangman8='''
+  _______
+ || /    |
+ ||/     O
+ ||     /|\\
+ ||      |
+ ||
+ ||
+/¯¯\\
+'''
+hangman7='''
+  _______
+ || /    |
+ ||/     O
+ ||      |
+ ||      |
+ ||
+ ||
+/¯¯\\
+'''
+hangman6='''
+  _______
+ || /    |
+ ||/     O
+ ||
+ ||
+ ||
+ ||
+/¯¯\\
+'''
+hangman5='''
+  _______
+ || /    |
+ ||/
+ ||
+ ||
+ ||
+ ||
+/¯¯\\
+'''
+hangman4='''
+  _______
+ || /
+ ||/
+ ||
+ ||
+ ||
+ ||
+/¯¯\\
+'''
+hangman3='''
+  _______
+ ||
+ ||
+ ||
+ ||
+ ||
+ ||
+/¯¯\\
+'''
+hangman2='''
+
+ ||
+ ||
+ ||
+ ||
+ ||
+ ||
+/¯¯\\
+'''
+hangman1='''
+
+
+
+
+
+
+
+/¯¯\\
+'''
+hangman0='''
+
+
+
+
+
+
+
+
+'''
+repeat='j'
+while repeat=='j':
+    quizmaster=input('Bitte Namen des Quizmasters eingeben: ')
+    word=input(f'{quizmaster}, bitte gib das geheime Wort ein: ')
+    word_low=word.lower()
+    clear()
+    solution=''
+    for i in range(len(word)):
+        solution=solution + '_ '
+    print(solution)
+    HANGMAN=[hangman0,hangman1,hangman2,hangman3,hangman4,hangman5,hangman6,hangman7,hangman8,hangman9]
+    print(HANGMAN[0])
+    Buchstaben=[]
+    H=0
+    while H<9:
+        x=input('Bitte einen Buchstaben eingeben: ')
+        Buchstaben.append(x)
+        if x in word_low:
+            solutionneu=''
+            for i in range(len(word_low)):
+                if word_low[i] in Buchstaben:
+                    solutionneu=solutionneu + word_low[i] + ' '
+                else:
+                    solutionneu=solutionneu + '_ '
+            solution=solutionneu
+            clear()
+            print(solution)
+            print(HANGMAN[H])
+            if '_' not in solution:
+                print(f'{quizmaster}, naxts moi denkst da a gscheids Wort aus!')
+                break
+        else:
+            clear()
+            print(solution)
+            H=H+1
+            print(HANGMAN[H])
+            if H==9:
+                print(f'Jetz hengt a, {quizmaster} gewinnt!')
+                print(f'"{word}"' + ' waars gwesn...')
+    repeat=input('Nochmal spielen? (j/n) ')
+</pre>
+{% endblock %}
